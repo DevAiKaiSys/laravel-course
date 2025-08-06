@@ -8,23 +8,12 @@
 </head>
 
 <body>
-    {{--
-    this is a comment
-    this is a second comment
-    --}}
-
-    <!-- This is a HTML comment -->
     <h1>About Us</h1>
     <h2>Name: {{ $name }}</h2>
     <h2>ID: {{ $id }}</h2>
 
-    @for($i=0; $i < 10; $i++)
-        <p>Item {{ $i }}</p>
-
-        @if($i == 5)
-            <h1>Hi this is {{ $i }}</h1>
-        @endif
-    @endfor
+    {{-- @include('SubViews.Input', ['myName' => 'this is my name']) --}}
+    @include('SubViews.Input', ['myName' => $name])
 </body>
 
 </html>

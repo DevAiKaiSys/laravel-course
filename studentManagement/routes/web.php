@@ -31,3 +31,11 @@ Route::prefix('details')->group(function () {
         return 'this is teachers';
     })->name('teachers-details');
 });
+
+Route::get('/students/{id}/{reg}',function ($id, $reg) {
+    return 'this is student number: '.$id.' registration number: '.$reg;
+});
+
+Route::fallback(function () {
+    return 'This page is not found please try again';
+});

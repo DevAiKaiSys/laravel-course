@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,10 +21,17 @@ Route::get('/', function () {
 /* Route::get('/about-us/{name}/{id}', function ($name, $id) {
     return view('aboutus', compact('name', 'id'));
 }); */
-Route::get('/about-us', function () {
+/* Route::get('/about-us', function () {
     return view('aboutus');
-});
+}); */
 
 /* Route::view('contect-us', 'contectus', ['name' => 'tester', 'email' => 'tester@gmail.com']); */
 /* Route::view('contect-us/{name}/{id}', 'contectus'); */
 Route::view('/contact-us', 'contactus');
+
+/* Route::get('/students', [StudentController::class, 'index']);
+Route::get('/about-us', [StudentController::class, 'aboutUs']); */
+Route::controller(StudentController::class)->group(function () {
+    Route::get('students', 'index');
+    Route::get('about-us', 'aboutUs');
+});

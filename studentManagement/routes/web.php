@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\SecondTestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,7 +35,11 @@ Route::view('/contact-us', 'contactus');
 Route::get('/about-us', [StudentController::class, 'aboutUs']); */
 Route::controller(StudentController::class)->group(function () {
     Route::get('students', 'index');
-    /* Route::get('about-us', 'aboutUs'); */
-    Route::get('about-us/{id}/{name}', 'aboutUs');
+    Route::get('about-us', 'aboutUs');
+    /* Route::get('about-us/{id}/{name}', 'aboutUs'); */
 });
 /* Route::get('about-us/{id}/{name}', [StudentController::class, 'aboutUs']); */
+
+Route::get('invoke', TestController::class);
+
+Route::resource('second-test', SecondTestController::class);

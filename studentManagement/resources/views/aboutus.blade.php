@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('scripts')
+    <script>
+        alert('hi');
+    </script>
+@endsection
 
-<body>
-    <h1>About Us</h1>
-    <h2>Name: {{ $name }}</h2>
-    <h2>ID: {{ $id }}</h2>
 
-    {{-- @include('SubViews.Input', ['myName' => 'this is my name']) --}}
-    @include('SubViews.Input', ['myName' => $name])
-</body>
-
-</html>
+@section('content')
+    <section>
+        <h2>About Us</h2>
+        <p>This is a simple HTML and CSS template to start your project.</p>
+    </section>
+@endsection

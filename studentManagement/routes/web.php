@@ -33,5 +33,7 @@ Route::view('/contact-us', 'contactus');
 Route::get('/about-us', [StudentController::class, 'aboutUs']); */
 Route::controller(StudentController::class)->group(function () {
     Route::get('students', 'index');
-    Route::get('about-us', 'aboutUs');
+    /* Route::get('about-us', 'aboutUs'); */
+    Route::get('about-us/{id}/{name}', 'aboutUs');
 });
+/* Route::get('about-us/{id}/{name}', [StudentController::class, 'aboutUs']); */

@@ -13,8 +13,13 @@ class StudentController extends Controller
         return 'hello from StudentController';
     }
 
-    public function aboutUs()
+    /* public function aboutUs()
     {
         return 'code with aryumi';
+    } */
+    public function aboutUs($id, $name)
+    {
+        /* return 'ID No ' . $id . ' and Name is ' . $name; */
+        return view('aboutus', compact('id', 'name'));
     }
 }

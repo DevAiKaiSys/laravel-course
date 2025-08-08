@@ -76,6 +76,14 @@ The project uses a MySQL database running in a Docker container.
     php artisan migrate
     ```
 
+-   **To run Rollback the last batch of migrations:**
+
+    ```bash
+    docker-compose exec app php artisan migrate:rollback
+    or
+    docker-compose exec app php artisan migrate:rollback --step=2
+    ```
+
 -   **To seed the database:**
 
     ```bash

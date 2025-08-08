@@ -88,7 +88,19 @@ The project uses a MySQL database running in a Docker container.
 
     ```bash
     docker-compose exec app php artisan db:seed
+    or
+    docker-compose exec app php artisan db:seed --class=CountriesSeeder
     ```
+
+-   **To create a new model:**
+
+    ```bash
+    docker-compose exec app php artisan make:model ModelName
+    ```
+
+    -   `-m`: Creates a migration file for the model.
+    -   `-c`: Creates a controller for the model.
+    -   `-s`: Creates a seeder for the model.
 
 ## Running Tests
 

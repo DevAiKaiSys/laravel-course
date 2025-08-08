@@ -83,4 +83,17 @@ class StudentController extends Controller
 
         return $students;
     }
+
+    public function updateData()
+    {
+        DB::table('students')
+            ->where('id', 3)
+            ->update([
+                'name' => 'updated name',
+                'age' => 20,
+                'email' => 'updated@email.com'
+            ]);
+
+        return 'Updated Successfully';
+    }
 }

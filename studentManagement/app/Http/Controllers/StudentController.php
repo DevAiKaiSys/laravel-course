@@ -3,43 +3,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
     //
 
-    protected $name;
-    private $age;
+    // protected $name;
+    // private $age;
 
-    public function __construct()
+    // public function __construct()
+    // {
+    //     $this->name = 'My Name';
+    //     $this->age = 20;
+    // }
+
+    // public function index()
+    // {
+    //     return 'hello from StudentController';
+    // }
+
+    // /* public function aboutUs()
+    // {
+    //     return 'code with aryumi';
+    // } */
+    // public function aboutUs($id, $name)
+    // {
+    //     /* return 'ID No ' . $id . ' and Name is ' . $name; */
+
+    //     /* $name = $this->privateFunction();
+    //     return $name; */
+    //     /* return $this->name; */
+    //     return $this->age;
+
+    //     return view('aboutus', compact('id', 'name'));
+    // }
+
+    // private function privateFunction()
+    // {
+    //     return 'hello world';
+    // }
+
+    public function addData()
     {
-        $this->name = 'My Name';
-        $this->age = 20;
-    }
+        DB::table('students')->insert([
+            [
+                'name' => 'tester2',
+                'email' => 'tester2@example.com',
+                'age' => 16,
+                'date_of_birth' => '2010-01-01',
+                'gender' => 'f'
+            ],
+            [
+                'name' => 'tester3',
+                'email' => 'tester3@example.com',
+                'age' => 17,
+                'date_of_birth' => '2010-01-01',
+                'gender' => 'f'
+            ]
+        ]);
 
-    public function index()
-    {
-        return 'hello from StudentController';
-    }
-
-    /* public function aboutUs()
-    {
-        return 'code with aryumi';
-    } */
-    public function aboutUs($id, $name)
-    {
-        /* return 'ID No ' . $id . ' and Name is ' . $name; */
-
-        /* $name = $this->privateFunction();
-        return $name; */
-        /* return $this->name; */
-        return $this->age;
-
-        return view('aboutus', compact('id', 'name'));
-    }
-
-    private function privateFunction()
-    {
-        return 'hello world';
+        return 'added successfully';
     }
 }

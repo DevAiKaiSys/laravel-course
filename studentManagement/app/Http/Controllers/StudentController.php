@@ -96,4 +96,14 @@ class StudentController extends Controller
 
         return 'Updated Successfully';
     }
+
+    public function deleteData()
+    {
+        DB::table('students')
+            /* ->where('id', 3) */
+            ->where('id', '>', 3)
+            ->delete();
+
+        return 'Deleted Successfully';
+    }
 }

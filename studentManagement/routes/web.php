@@ -21,3 +21,4 @@ Route::get('/', function () {
 // Route::get('/delete-teacher/{id}', [TeachersController::class, 'delete']);
 
 Route::get('/add-data', [StudentController::class, 'addData']);
+Route::get('/get-data', [StudentController::class, 'getData']);

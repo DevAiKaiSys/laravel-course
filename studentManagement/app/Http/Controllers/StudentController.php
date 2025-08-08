@@ -65,4 +65,22 @@ class StudentController extends Controller
 
         return 'added successfully';
     }
+
+    public function getData()
+    {
+        $students = DB::table('students')
+            /* ->limit(2)
+            ->get(); */
+            /* ->first(); */
+            /* ->where('id', 3) */
+            /* ->where('id', '>=', 2) */
+            /* ->where('id', 2)
+            ->orWhere('id', 1)
+            ->get(); */
+            ->select('id', 'name')
+            ->where('id', 3)
+            ->first();
+
+        return $students;
+    }
 }

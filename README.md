@@ -1,17 +1,5 @@
 # Laravel Docker Environment
 
-This repository contains a Dockerized Laravel application, providing a consistent and easy-to-manage development environment.
-
-## Table of Contents
-
-- [Environment](#environment)
-- [Getting Started](#getting-started)
-- [Running the Project](#running-the-project)
-- [Database](#database)
-- [Running Tests](#running-tests)
-- [Dependencies](#dependencies)
-- [References](#references)
-
 ## Environment
 
 -   **PHP:** 8.4.x
@@ -21,78 +9,64 @@ This repository contains a Dockerized Laravel application, providing a consisten
 
 ## Getting Started
 
-1.  **Clone the repository:**
+```bash
+git clone <repository-url>
+cd laravel-docker
+```
 
-    ```bash
-    git clone <repository-url>
-    cd laravel-docker
-    ```
+```bash
+cp firstwebsite/.env.example firstwebsite/.env
+```
 
-2.  **Set up the environment file:**
-
-    ```bash
-    cp firstwebsite/.env.example firstwebsite/.env
-    ```
-
-3.  **Update the `.env` file in the `firstwebsite` directory with your database credentials.**
-
-    ```dotenv
-    DB_CONNECTION=mysql
-    DB_HOST=db
-    DB_PORT=3306
-    DB_DATABASE=laravel
-    DB_USERNAME=laravel
-    DB_PASSWORD=password
-    ```
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=laravel
+DB_PASSWORD=password
+```
 
 ## Running the Project
 
-To run the project using Docker, follow these steps:
+```bash
+cd docker
+```
 
-1.  **Navigate to the `docker` directory:**
+```bash
+docker-compose up --build
+```
 
-    ```bash
-    cd docker
-    ```
-
-2.  **Build and start the Docker containers:**
-
-    ```bash
-    docker-compose up --build
-    ```
-
-3.  **Access the application in your browser at [http://localhost:8000](http://localhost:8000).**
+Access the application at [http://localhost:8000](http://localhost:8000).
 
 ## Database
 
-The project uses a MySQL database running in a Docker container.
-
--   **To run database migrations:**
+-   **Run database migrations:**
 
     ```bash
     docker-compose exec app php artisan migrate
-    or
+    # or
     docker exec -it laravel-app bash
     php artisan migrate
     ```
 
--   **To run Rollback the last batch of migrations:**
+-   **Rollback the last batch of migrations:**
 
     ```bash
     docker-compose exec app php artisan migrate:rollback
-    or
+    # or
     docker-compose exec app php artisan migrate:rollback --step=2
     ```
 
--   **To seed the database:**
+-   **Seed the database:**
 
     ```bash
     docker-compose exec app php artisan db:seed
-    or
+    # or
     docker-compose exec app php artisan db:seed --class=CountriesSeeder
     ```
 
--   **To create a new model:**
+-   **Create a new model:**
 
     ```bash
     docker-compose exec app php artisan make:model ModelName
@@ -102,9 +76,27 @@ The project uses a MySQL database running in a Docker container.
     -   `-c`: Creates a controller for the model.
     -   `-s`: Creates a seeder for the model.
 
-## Running Tests
+### Database Migrations
 
-To run the application tests, use the following command:
+-   **Creating a new table:**
+
+    ```bash
+    php artisan make:migration create_flights_table
+    ```
+
+-   **Adding a column to an existing table:**
+
+    ```bash
+    php artisan make:migration add_price_to_flights_table
+    ```
+
+-   **Running migrations:**
+
+    ```bash
+    php artisan migrate
+    ```
+
+## Running Tests
 
 ```bash
 docker-compose exec app php artisan test
@@ -112,15 +104,13 @@ docker-compose exec app php artisan test
 
 ## Dependencies
 
-Project dependencies are managed by Composer (PHP) and NPM (JavaScript).
-
--   **To install Composer dependencies:**
+-   **Install Composer dependencies:**
 
     ```bash
     docker-compose exec app composer install
     ```
 
--   **To install NPM dependencies:**
+-   **Install NPM dependencies:**
 
     ```bash
     docker-compose exec app npm install
@@ -129,3 +119,4 @@ Project dependencies are managed by Composer (PHP) and NPM (JavaScript).
 ## References
 
 -   [Laravel 12 Full Course – Complete Tutorial](https://www.youtube.com/playlist?list=PLWiQT7FWaG1jG8RQq1dFiSE7O-g9HQuYE)
+-   [Database: Query Builder](https://laravel.com/docs/12.x/queries#main-content)

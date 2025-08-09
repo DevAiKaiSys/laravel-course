@@ -68,7 +68,7 @@ class StudentController extends Controller
 
     public function getData()
     {
-        $students = DB::table('students')
+        $items = DB::table('students')
             /* ->limit(2)
             ->get(); */
             /* ->first(); */
@@ -77,11 +77,15 @@ class StudentController extends Controller
             /* ->where('id', 2)
             ->orWhere('id', 1)
             ->get(); */
-            ->select('id', 'name')
+            /* ->select('id', 'name')
             ->where('id', 3)
-            ->first();
+            ->first(); */
+            /* ->count(); */
+            /* ->max('score'); */
+            /* ->min('score'); */
+            ->avg('score');
 
-        return $students;
+        return $items;
     }
 
     public function updateData()
